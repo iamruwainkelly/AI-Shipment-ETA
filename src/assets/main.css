@@ -1,0 +1,211 @@
+@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root variables for consistent theming */
+:root {
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-display: swap;
+}
+
+body {
+  font-family: var(--font-family);
+  font-feature-settings: 'rlig' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Dark mode by default */
+#app {
+  @apply min-h-screen bg-dark-bg text-dark-text;
+}
+
+/* Component utilities */
+.btn-primary {
+  @apply bg-gradient-to-r from-gradient-orange to-gradient-purple hover:from-gradient-orange/90 hover:to-gradient-purple/90 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-dark-surface-3 hover:bg-dark-surface-2 text-dark-text-2 border border-dark-border-2 hover:border-dark-border font-medium py-2 px-4 rounded-lg transition-all duration-200;
+}
+
+.btn-danger {
+  @apply bg-status-error hover:bg-status-error/90 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
+}
+
+.btn-success {
+  @apply bg-status-success hover:bg-status-success/90 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
+}
+
+/* Form inputs */
+.input-primary {
+  @apply bg-dark-surface-3 border border-dark-border-2 focus:border-gradient-orange focus:ring-1 focus:ring-gradient-orange/20 text-dark-text-2 rounded-lg px-3 py-2 transition-all duration-200;
+}
+
+/* Cards */
+.card {
+  @apply bg-dark-surface-2 border border-dark-border-2 rounded-lg shadow-lg;
+}
+
+.card-header {
+  @apply p-4 border-b border-dark-border-2;
+}
+
+.card-body {
+  @apply p-4;
+}
+
+/* Status badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply bg-status-success/20 text-status-success border border-status-success/30;
+}
+
+.badge-warning {
+  @apply bg-status-warning/20 text-status-warning border border-status-warning/30;
+}
+
+.badge-error {
+  @apply bg-status-error/20 text-status-error border border-status-error/30;
+}
+
+.badge-info {
+  @apply bg-status-info/20 text-status-info border border-status-info/30;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 108, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 108, 0, 0.8);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff6c00, #a678ff);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff6c00dd, #a678ffdd);
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Focus styles */
+.focus-visible {
+  @apply outline-none ring-2 ring-gradient-orange/50 ring-offset-2 ring-offset-dark-bg;
+}
+
+/* Text gradients */
+.text-gradient {
+  background: linear-gradient(135deg, #ff6c00 0%, #a678ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism effect */
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
